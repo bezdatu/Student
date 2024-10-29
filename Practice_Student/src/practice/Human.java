@@ -3,7 +3,7 @@ package practice;
 public class Human {
 	private String name;
 	private String lastName;
-	Gender gender;
+	private Gender gender;
 	public Human(String name, String lastName, Gender gender) {
 		super();
 		this.name = name;

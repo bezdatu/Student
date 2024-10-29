@@ -27,29 +27,29 @@ public class Main {
 	        group.sortStudentsByLastName();
 	        System.out.println(group);
 	        
-//	        NewStudent newStudentInput = new NewStudent();
-//	        try {
-//	            Student newStudent = newStudentInput.readStudentFromInput();
-//	            group.addStudent(newStudent); 
-//	        } catch (GroupOverflowException e) {
-//	            System.out.println(e.getMessage()); 
-//
-//	        System.out.println(group); 
-//	        }
-//	        try {
-//	            Student foundStudent = group.searchStudentByLastName("Ivanov");
-//	            System.out.println(foundStudent);
-//	        } catch (StudentNotFoundException e) {
-//	            System.out.println(e.getMessage());
-//	        }
-//			System.out.println();
-//	          
-//			int idToRemove = 11;
-//	        if (group.removeStudentById(idToRemove)) {
-//	            System.out.println("Student with ID " + idToRemove + " removed successfully.");
-//	        } else {
-//	            System.out.println("Student with ID " + idToRemove + " not found.");
-//	        }
+	        NewStudent newStudentInput = new NewStudent();
+	        try {
+	            Student newStudent = newStudentInput.readStudentFromInput();
+	            group.addStudent(newStudent); 
+	        } catch (GroupOverflowException e) {
+	            System.out.println(e.getMessage()); 
+
+	        System.out.println(group); 
+	        }
+	        try {
+	            Student foundStudent = group.searchStudentByLastName("Ivanov");
+	            System.out.println(foundStudent);
+	        } catch (StudentNotFoundException e) {
+	            System.out.println(e.getMessage());
+	        }
+			System.out.println();
+	          
+			int idToRemove = 11;
+	        if (group.removeStudentById(idToRemove)) {
+	            System.out.println("Student with ID " + idToRemove + " removed successfully.");
+	        } else {
+	            System.out.println("Student with ID " + idToRemove + " not found.");
+	        }
 	        System.out.println();
 	        System.out.println(group);	
 	        
