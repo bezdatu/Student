@@ -34,7 +34,11 @@ public class Main {
 	        NewStudent newStudentInput = new NewStudent();
 	        try {
 	            Student newStudent = newStudentInput.readStudentFromInput();
-	            group.addStudent(newStudent); 
+	            if (group.isStudentEquivalent(newStudent)) {
+	                System.out.println("Student " + newStudent.getLastName() + " is already in the group.");
+	            } else {
+	                group.addStudent(newStudent); 
+	            } 
 	        } catch (GroupOverflowException e) {
 	            System.out.println(e.getMessage()); 
 

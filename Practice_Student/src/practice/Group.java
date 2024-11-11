@@ -84,6 +84,7 @@ public class Group {
 	public String getName() {
 		return groupName;
 	}
+	
 	@Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -93,7 +94,17 @@ public class Group {
                 Objects.equals(groupName, group.groupName) &&
                 Arrays.equals(students, group.students);
     }
-
+	public boolean isStudentEquivalent(Student student) {
+	    for (Student existingStudent : students) {
+	        if (existingStudent != null &&
+	            existingStudent.getName().equals(student.getName()) &&  
+	            existingStudent.getLastName().equals(student.getLastName()) &&    
+	            existingStudent.getGender() == student.getGender()) {             
+	            return true; 
+	        }
+	    }
+	    return false; 
+	}
     @Override
     public int hashCode() {
         int result = Objects.hash(groupName, nextId);
