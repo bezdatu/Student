@@ -1,4 +1,8 @@
 package practice;
+import practice.Student;
+import practice.Group;
+import practice.Human;
+import practice.GroupOverflowException;
 
 import java.io.File;
 
