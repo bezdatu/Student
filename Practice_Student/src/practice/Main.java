@@ -15,7 +15,7 @@ public class Main {
 			
 			Student student1 = new Student("Andrey", "Petrov", Human.Gender.MALE);
 	        Student student2 = new Student("Ivan", "Ivanov", Human.Gender.MALE);
-	        Student student3 = new Student("Anna", "Pupkina", Human.Gender.FEMALE);
+	        Student student3 = new Student("Andrey", "Petrov", Human.Gender.MALE);
 	        
     
 	        try {	          
@@ -34,11 +34,7 @@ public class Main {
 	        NewStudent newStudentInput = new NewStudent();
 	        try {
 	            Student newStudent = newStudentInput.readStudentFromInput();
-	            if (group.isStudentEquivalent(newStudent)) {
-	                System.out.println("Student " + newStudent.getLastName() + " is already in the group.");
-	            } else {
-	                group.addStudent(newStudent); 
-	            } 
+	            group.addStudent(newStudent); 
 	        } catch (GroupOverflowException e) {
 	            System.out.println(e.getMessage()); 
 

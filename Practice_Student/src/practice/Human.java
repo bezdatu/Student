@@ -40,18 +40,20 @@ public class Human {
 	public String toString() {
 		return "Human [name=" + name + ", lastName=" + lastName + ", gender=" + gender + "]";
 	}
-		@Override
-	    public boolean equals(Object o) {
-	        if (this == o) return true;
-	        if (o == null || getClass() != o.getClass()) return false;
-	        Human human = (Human) o;
-	        return Objects.equals(name, human.name) &&
-	                Objects.equals(lastName, human.lastName) &&
-	                gender == human.gender;
-	    }
-
-	    @Override
-	    public int hashCode() {
-	        return Objects.hash(name, lastName, gender);
-	    }
+	@Override
+	public int hashCode() {
+		return Objects.hash(gender, lastName, name);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Human other = (Human) obj;
+		return gender == other.gender && Objects.equals(lastName, other.lastName) && Objects.equals(name, other.name);
+	}
+		
 	}

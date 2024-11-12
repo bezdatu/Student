@@ -30,9 +30,22 @@ public class Group {
 		return students;
 	}
 	
+	public boolean isStudentEquivalent(Student student) {
+	    for (Student existingStudent : students) {
+	        if (existingStudent != null && existingStudent.equals(student)) {
+	            return true;
+	        }
+	    }
+	    return false; 
+	}
+	
 	public void addStudent(Student student) throws GroupOverflowException {
 		student.setId(nextId);
 		student.setGroupName(this.groupName);
+		if (isStudentEquivalent(student)) {
+			System.out.println("Student " + student.getLastName() + " is already in the group.");
+			return;
+		}
 		for (int i = 0; i <students.length; i++) {
 			if (students[i] == null) {
 				students[i] = student;
@@ -84,31 +97,25 @@ public class Group {
 	public String getName() {
 		return groupName;
 	}
-	
 	@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Group group = (Group) o;
-        return nextId == group.nextId &&
-                Objects.equals(groupName, group.groupName) &&
-                Arrays.equals(students, group.students);
-    }
-	public boolean isStudentEquivalent(Student student) {
-	    for (Student existingStudent : students) {
-	        if (existingStudent != null &&
-	            existingStudent.getName().equals(student.getName()) &&  
-	            existingStudent.getLastName().equals(student.getLastName()) &&    
-	            existingStudent.getGender() == student.getGender()) {             
-	            return true; 
-	        }
-	    }
-	    return false; 
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(students);
+		result = prime * result + Objects.hash(groupName, nextId);
+		return result;
 	}
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(groupName, nextId);
-        result = 31 * result + Arrays.hashCode(students);
-        return result;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Group other = (Group) obj;
+		return Objects.equals(groupName, other.groupName) && nextId == other.nextId
+				&& Arrays.equals(students, other.students);
+	}
+	
 }

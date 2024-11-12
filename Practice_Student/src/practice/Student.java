@@ -37,19 +37,21 @@ public class Student extends Human {
 	    return "Student [id=" + id + ", lastName=" + getLastName() + "]";
 	}
 	@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Student student = (Student) o;
-        return id == student.id &&
-                Objects.equals(groupName, student.groupName);
-    }
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(groupName, id);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) return true;
+	    if (obj == null || getClass() != obj.getClass()) return false;
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), id, groupName);
-    }
-
+	    Student other = (Student) obj;
+	    return Objects.equals(getLastName(), other.getLastName()) && 
+	           Objects.equals(getName(), other.getName());
+	}
+	
 }
 
